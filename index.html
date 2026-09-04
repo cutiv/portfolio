@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jay's Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #fff;
+      background: #000;
+    }
+
+    .video-bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.42);
+    }
+
+    /* First-interaction screen: enables video audio in modern browsers */
+    .enter-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: #000;
+      transition: opacity 700ms ease, visibility 700ms ease;
+    }
+
+    .enter-screen.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .enter-button {
+      appearance: none;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      padding: 17px 25px;
+      color: #fff;
+      font: inherit;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .enter-button:hover,
+    .enter-button:focus-visible {
+      color: #fff;
+      background: #e83232;
+      border-color: #e83232;
+      outline: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      padding: 60px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(2.35rem, 7vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: 0.045em;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+    }
+
+    .accordion {
+      width: 100%;
+      max-width: 620px;
+      margin: 30px 0 60px;
+    }
+
+    .accordion-item { border-bottom: 1px solid rgba(255, 255, 255, 0.28); }
+
+    .accordion-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 10px;
+      background: transparent;
+      border: 0;
+      color: #fff;
+      font: inherit;
+      font-size: 1.08rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: color 180ms ease;
+    }
+
+    .accordion-header::after {
+      content: "+";
+      font-size: 1.4rem;
+      font-weight: 300;
+      transition: transform 250ms ease;
+    }
+
+    .accordion-header[aria-expanded="true"]::after { transform: rotate(45deg); }
+    .accordion-header:hover, .accordion-header:focus-visible { color: #ff3b3b; outline: none; }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 10px;
+      text-align: left;
+      font-size: 0.96rem;
+      line-height: 1.55;
+      transition: max-height 350ms ease, padding 350ms ease;
+    }
+
+    .accordion-content.open { padding: 0 10px 20px; }
+    .accordion-content p { margin-bottom: 12px; }
+
+    .accordion-content img {
+      display: block;
+      width: min(180px, 100%);
+      border-radius: 5px;
+      margin: 12px 0;
+    }
+
+    .accordion-content a { color: #fff; text-decoration: underline; transition: color 180ms ease; }
+    .accordion-content a:hover { color: #ff3b3b; }
+
+    .work-link {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 3px;
+      text-decoration: none !important;
+      transition: background 180ms ease, border-color 180ms ease, color 180ms ease !important;
+    }
+
+    .work-link:hover, .work-link:focus-visible {
+      background: #e83232;
+      color: #fff !important;
+      border-color: #e83232;
+      outline: none;
+    }
+
+    .footer { margin-top: auto; font-size: 0.8rem; opacity: 0.88; line-height: 1.4; }
+    .footer-small { margin-top: 4px; font-size: 0.68rem; opacity: 0.78; }
+
+    @media (max-width: 520px) {
+      .content { padding-top: 44px; }
+      .accordion-header { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Replace your-video.mp4 with the filename of your video file. -->
+  <video id="background-video" class="video-bg" loop playsinline preload="auto" aria-label="Background video">
+    <source src="Green_Sleep_Loop.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- The visitor's click permits the browser to start audio playback. -->
+  <div id="enter-screen" class="enter-screen">
+    <button id="enter-button" class="enter-button" type="button">Enter with sound</button>
+  </div>
+
+  <main class="content">
+    <h1>Jay's Portfolio</h1>
+
+    <div class="accordion">
+      <section class="accordion-item">
+        <button class="accordion-header" type="button" aria-expanded="false" aria-controls="about-content">
+          About Jay
+        </button>
+        <div id="about-content" class="accordion-content" role="region">
+          <p>[Replace this with a brief 3–5 sentence artist bio describing your practice, influences, and current work.]</p>
+          <img src="headshot.jpg" alt="Portrait of Jay" />
+          <p>
+            <a href="CV-Museums-Vic.pdf" target="_blank" rel="noopener">Download CV</a> ·
+            <a href="Cover-Letter-Noise-Complaint.pdf" target="_blank" rel="noopener">Download Cover Letter</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="accordion-item">
+        <button class="accordion-header" type="button" aria-expanded="false" aria-controls="running-content">
+          Running Music Video
+        </button>
+        <div id="running-content" class="accordion-content" role="region">
+          <p>A music video exploring motion, rhythm, and landscape.</p>
+          <a class="work-link" href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" rel="noopener">Watch on YouTube</a>
+        </div>
+      </section>
+
+      <section class="accordion-item">
+        <button class="accordion-header" type="button" aria-expanded="false" aria-controls="works-content">
+          Various other works
+        </button>
+        <div id="works-content" class="accordion-content" role="region">
+          <p>Selected pieces across video, sound, and visual experiments.</p>
+          <a class="work-link" href="https://vimeo.com/YOUR_VIDEO_ID" target="_blank" rel="noopener">Watch on Vimeo</a>
+        </div>
+      </section>
+
+      <section class="accordion-item">
+        <button class="accordion-header" type="button" aria-expanded="false" aria-controls="contact-content">
+          Contact me
+        </button>
+        <div id="contact-content" class="accordion-content" role="region">
+          <p>
+            Email: <a href="mailto:your.email@example.com">jay.rcutforth@gmail.com</a><br />
+            Phone: <a href="tel:+61400000000">+61 421 543 032</a><br />
+            Instagram: <a href="https://instagram.com/cutivblue" target="_blank" rel="noopener">@cutivblue</a>
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      Visuals and music created by Jay + Will &amp; the Mood
+      <div class="footer-small">Song Title: Will &amp; the Mood – Green Sleep</div>
+      <div class="footer-small">Video cut from: Dog Star Man – Stan Brakhage</div>
+    </footer>
+  </main>
+
+  <script>
+    const video = document.getElementById('background-video');
+    const enterScreen = document.getElementById('enter-screen');
+    const enterButton = document.getElementById('enter-button');
+
+    enterButton.addEventListener('click', async () => {
+      video.muted = false;
+      video.volume = 0.8;
+
+      try {
+        await video.play();
+        enterScreen.classList.add('is-hidden');
+      } catch (error) {
+        // If a browser blocks playback, leave the screen available so the visitor can retry.
+        enterButton.textContent = 'Tap to play with sound';
+      }
+    });
+
+    const headers = document.querySelectorAll('.accordion-header');
+    headers.forEach((header) => {
+      header.addEventListener('click', () => {
+        const content = document.getElementById(header.getAttribute('aria-controls'));
+        const opening = header.getAttribute('aria-expanded') === 'false';
+
+        document.querySelectorAll('.accordion-header').forEach((item) => {
+          item.setAttribute('aria-expanded', 'false');
+        });
+        document.querySelectorAll('.accordion-content').forEach((item) => {
+          item.classList.remove('open');
+          item.style.maxHeight = '0';
+        });
+
+        if (opening) {
+          header.setAttribute('aria-expanded', 'true');
+          content.classList.add('open');
+          content.style.maxHeight = `${content.scrollHeight}px`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
