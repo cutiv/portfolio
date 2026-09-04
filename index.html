@@ -81,22 +81,38 @@
   }
 
   h1 {
-    font-size: clamp(2.35rem, 7vw, 5.5rem);
-    font-weight: 700;
-    letter-spacing: 0.045em;
-    margin-bottom: 10px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    font-size: clamp(3rem, 12vw, 9rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px 2vw;
+    text-align: left;
+    tranfsorm: scaleX(1.15);
+    transform-origin: left center;
   }
 
-  .accordion {
-    width: 100%;
-    max-width: 620px;
-    margin: 30px 0 60px;
+  .content {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    padding: 120px 0 40px 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
     background: transparent;
+    justify-content: space-between;
+
+  .accordion {
+    width: min(620px, 90vw);
+    margin-top: auto;
+    margin-bottom: 80px;
+    background: transparent;
+    align-self: flex-start
   }
 
   .accordion-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+    border-bottom: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.28);
+    position: relative;
     background: transparent;
   }
 
@@ -116,6 +132,8 @@
     cursor: pointer;
     transition: color 180ms ease;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 2;
   }
 
   .accordion-header::after {
@@ -137,9 +155,17 @@
     line-height: 1.55;
     transition: max-height 350ms ease, padding 350ms ease;
     background: transparent;
+    position: relative;
+    z-index: 1;
   }
 
-  .accordion-content.open { padding: 0 10px 20px; }
+  .accordion-item {
+    display: flex;
+    flex-directon: column-reverse;
+  }
+
+  .accordion-content.open { 
+    padding: 18px 10px 6px; }
   .accordion-content p {
     margin-bottom: 12px;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
@@ -182,6 +208,10 @@
     line-height: 1.4;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
     background: transparent;
+    align-self: flex-end;
+    text-align: right;
+    margin-right: 2vw;
+    margin-bottom: 10px;
   }
 
   .footer-small {
@@ -216,7 +246,7 @@
 
   <!-- The visitor's click permits the browser to start audio playback. -->
   <div id="enter-screen" class="enter-screen">
-    <button id="enter-button" class="enter-button" type="button">Enter with sound</button>
+    <button id="enter-button" class="enter-button" type="button">Enter</button>
   </div>
 
   <main class="content">
