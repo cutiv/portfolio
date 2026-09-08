@@ -240,12 +240,24 @@
   }
   
   /* 111 MUTE, The bottom-right group: slider on left, MUTE on right */
-.audio-controls {
-  position: absolute;
+.bottom-right-panel {
+  position: fixed;
+  z-index: 5;
   right: 2vw;
   bottom: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+
+  text-align: right;
+}
+  
+.audio-controls {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 12px;
 }
 
@@ -344,16 +356,13 @@
 }
     
   .footer {
-    margin-top: auto;
-    margin-right: 2vw;
-    margin-bottom: 10px;
+    margin: 0;
     font-size: 0.8rem;
     opacity: 0.95;
     line-height: 1.4;
+    text-align: right;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
     background: transparent;
-    align-self: flex-end;
-    text-align: right;
   }
 
   .footer-small {
@@ -364,8 +373,16 @@
   }
 
   @media (max-width: 520px) {
-    .content { padding-top: 44px; }
-    .accordion-header { font-size: 1rem; }
+    .content { 
+      padding-top: 44px; 
+    }
+    .accordion-header { 
+      font-size: 1rem; 
+    }
+    .bottom-right-panel {
+      right: 16px;
+      bottom: 16px;
+    }
   }
 </style>
 </head>
@@ -447,19 +464,28 @@
       </section>
     </div>
 
-    <div class="audio-controls">
-      <label class="sr-only" for="volume-slider">Volume</label>
+      
+    <div class="bottom-right-panel">
+  <footer class="footer">
+    <div class="footer-small">Site built by Jay Cutforth</div>
+    Visual rework and percussive composition by Jay Cutforth
+    <div class="footer-small">Audio ID: Will &amp; the Mood – Green Sleep</div>
+    <div class="footer-small">Video ID: Stan Brakhage – Dog Star Man</div>
+  </footer>
 
-      <input
-        id="volume-slider"
-        class="volume-slider"
-        type="range"
-        min="0"
-        max="100"
-        value="50"
-        aria-label="Volume"
-        />
-    
+  <div class="audio-controls">
+    <label class="sr-only" for="volume-slider">Volume</label>
+
+    <input
+      id="volume-slider"
+      class="volume-slider"
+      type="range"
+      min="0"
+      max="100"
+      value="50"
+      aria-label="Volume"
+    />
+
     <button
       id="mute-button"
       class="mute-button"
@@ -469,15 +495,8 @@
     >
       MUTE
     </button>
-    </div>
-      
-    <footer class="footer">
-      <div class="footer-small">
-      Site built by Jay Cutforth</div>
-      Visual rework and percussive composition by Jay Cutforth
-      <div class="footer-small">Audio ID: Will &amp; the Mood – Green Sleep</div>
-      <div class="footer-small">Video ID: Stan Brakhage – Dog Star Man</div>
-    </footer>
+  </div>
+</div>
   </main>
 
   <script>
