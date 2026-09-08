@@ -237,26 +237,25 @@
   }
   
   .mute-button {
-    appearance: none;
-    align-self: flex-start;
-    margin-top: auto;
-    margin-bottom: 10px;
-    margin-left: 0;
+  appearance: none;
+  position: absolute;
+  left: 2vw;
+  bottom: 10px;
 
-    padding: 7px 11px;
-    background: transparent;
-    border: 1px solid #e83232;
-    color: #e83232;
+  padding: 7px 11px;
+  background: transparent;
+  border: 1px solid #e83232;
+  color: #e83232;
 
-    font: inherit;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    line-height: 1;
-    cursor: pointer;
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  cursor: pointer;
 
-    transition: background 180ms ease, color 180ms ease;
-  }
+  transition: background 180ms ease, color 180ms ease;
+}
 
   .mute-button[aria-pressed="true:"] {
     background: #e83232;
@@ -270,6 +269,8 @@
     
   .footer {
     margin-top: auto;
+    margin-right: 2vw;
+    margin-bottom: 10px;
     font-size: 0.8rem;
     opacity: 0.95;
     line-height: 1.4;
@@ -277,8 +278,6 @@
     background: transparent;
     align-self: flex-end;
     text-align: right;
-    margin-right: 2vw;
-    margin-bottom: 10px;
   }
 
   .footer-small {
