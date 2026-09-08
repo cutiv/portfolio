@@ -236,47 +236,41 @@
     color: #ff3b3b; 
   }
 
-  .accordion-content a.work-link,
-  .accordion-content a.work-link:hover,
-  .accordion-content a.work-link:focus-visible,
-  .accordion-content a.work-link:active {
-    text-decoration: none;
-  }
+  /* Portfolio video links: red outline normally, red fill on interaction */
+.accordion-content a.work-link {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 9px 14px;
 
-  .work-link {
-    display: inline-block;
-    margin-top: 5px;
-    padding: 9px 14px;
+  background: transparent;
+  border: 1px solid #e83232;
+  border-radius: 0;
+  color: #e83232;
 
-    background: transparent;
-    border: 1px solid #e83232;
-    border-radius: 0;
-    color: #e83232;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
 
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
 
-    transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
-  }
+.accordion-content a.work-link:visited {
+  color: #e83232;
+}
 
-  .work-link:visited {
-    color: #e83232;
-  }
-
-  .accordion-content a.work-link:hover,
-  .accordion-content a.work-link:focus-visible,
-  .accordion-content a.work-link:active {
-    background: #e83232;
-    border-color: #e83232;
-    color: #fff;
-    text-decoration: none;
-    outline: none;
-  }
+.accordion-content a.work-link:hover,
+.accordion-content a.work-link:focus-visible,
+.accordion-content a.work-link:active {
+  background: #e83232;
+  border-color: #e83232;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
   
   /* 111 MUTE, The bottom-right group: slider on left, MUTE on right */
 .bottom-right-panel {
