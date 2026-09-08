@@ -47,16 +47,35 @@
 
   .enter-button {
     appearance: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 170px;
+    padding: 16px 28px 15px;
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.85);
-    padding: 17px 25px;
     color: #fff;
     font: inherit;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
     cursor: pointer;
-    transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    text-align: center;
+    transition: background 180ms ease, border-color 180ms ease;
+  }
+
+  .enter-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    line-height: 1;
+  }
+
+  .enter-subtitle {
+    colour: rgba(255, 255, 255, 0.6);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1;
   }
 
   .enter-button:hover,
@@ -252,7 +271,10 @@
 
   <!-- The visitor's click permits the browser to start audio playback. -->
   <div id="enter-screen" class="enter-screen">
-    <button id="enter-button" class="enter-button" type="button">Enter</button>
+    <button id="enter-button" class="enter-button" type="button">
+      <span class="enter-title">ENTER</span>
+      <span class="enter-subtitle">with audio</span>
+    </button>
   </div>
 
   <main class="content">
@@ -328,7 +350,10 @@
         enterScreen.classList.add('is-hidden');
       } catch (error) {
         // If a browser blocks playback, leave the screen available so the visitor can retry.
-        enterButton.textContent = 'Tap to play with sound';
+        enterButton.innerHTML = `
+  <span class="enter-title">TRY AGAIN</span>
+  <span class="enter-subtitle">tap to play with audio</span>
+`;
       }
     });
 
