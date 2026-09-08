@@ -178,6 +178,7 @@
   }
 
   .accordion-header[aria-expanded="true"]::after {
+    color: #e83232;
     transform: rotate(45deg); 
   }
     
@@ -185,6 +186,10 @@
   .accordion-header:focus-visible {
     color: #ff3b3b;
     outline: none; 
+  }
+
+  .accordion-header[aria-expanded="true"] {
+    color: #e83232;
   }
 
   .accordion-content {
