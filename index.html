@@ -133,7 +133,7 @@
   }
 
   .accordion {
-    width: min(900px, calc(100vw, 4vw));
+    width: min(900px, calc(100vw - 4vw));
     margin-top: auto;
     margin-bottom: 80px;
     background: transparent;
@@ -484,8 +484,8 @@
 
     enterButton.addEventListener('click', async () => {
       video.muted = false;
-      video.volume = 0.8;
-      volumeSlider.value = 80;
+      video.volume = 0.5;
+      volumeSlider.value = 50;
       muteButton.setAttribute('aria-pressed','false');
       muteButton.setAttribute('aria-label','Mute audio');
 
