@@ -57,7 +57,7 @@
     
     background: transparent;
     border: 1px solid #e83232;
-    color: #fff;
+    color: #e83232;
     font: inherit;
     cursor: pointer;
     text-align: center;
@@ -65,7 +65,7 @@
   }
 
   .enter-title {
-    color: #e83232;
+    color: inherit;
     font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 0.16em;
@@ -73,7 +73,8 @@
   }
 
   .enter-subtitle {
-    color: #e83232;
+    color: inherit;
+    opacity: 0.65;
     font-size: 0.7rem;
     font-weight: 400;
     letter-spacing: 0.08em;
@@ -82,10 +83,17 @@
 
   .enter-button:hover,
   .enter-button:focus-visible {
-    color: rgba(255, 255, 255, 0.65);
+    color: #fff;
     background: #e83232;
     border-color: #e83232;
     outline: none;
+  }
+
+  .enter-button:hover .enter-title,
+  .enter-button:hover .enter-subtitle,
+  .enter-button:focus-visible .enter-title,
+  .enter-button:focus-visible .enter-subtitle {
+    color: #fff;
   }
 
   /* Content on transparent background */
