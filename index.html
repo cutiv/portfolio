@@ -233,20 +233,35 @@
   .work-link {
     display: inline-block;
     margin-top: 5px;
-    padding: 8px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    border-radius: 3px;
-    text-decoration: none !important;
-    transition: background 180ms ease, border-color 180ms ease, color 180ms ease !important;
-    background: rgba(0, 0, 0, 0.35); /* slight dark tint for readability */
-    backdrop-filter: blur(2px);
+    padding: 7px 11px;
+
+    background: transparent;
+    border: 1px solid #e83232;
+    border-radius: 0;
+    color: #e83232;
+
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-sarif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
   }
 
-  .work-link:hover, .work-link:focus-visible {
+  .work-link:visited {
+    color: #e83232;
+  }
+
+  .work-link:hover,
+  .work-link:focus-visible,
+  .work-link:active {
     background: #e83232;
-    color: #fff !important;
     border-color: #e83232;
-    outline: none;
+    color: #fff;
+    outline; none;
   }
   
   /* 111 MUTE, The bottom-right group: slider on left, MUTE on right */
