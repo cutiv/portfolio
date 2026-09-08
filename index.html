@@ -453,7 +453,7 @@
         type="range"
         min="0"
         max="100"
-        value="80"
+        value="50"
         aria-label="Volume"
         />
     
@@ -516,8 +516,8 @@ muteButton.addEventListener('click', () => {
   if (video.muted || video.volume === 0) {
     /* Restore a useful volume when the user clicks an active MUTE button */
     if (video.volume === 0) {
-      video.volume = 0.8;
-      volumeSlider.value = 80;
+      video.volume = 0.5;
+      volumeSlider.value = 50;
     }
     video.muted = false;
   } else {
