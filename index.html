@@ -235,7 +235,39 @@
     border-color: #e83232;
     outline: none;
   }
+  
+  .mute-button {
+    appearance: none;
+    align-self: flex-start;
+    margin-top: auto;
+    margin-bottom: 10px;
+    margin-left: 0;
 
+    padding: 7px 11px;
+    background: transparent;
+    border: 1px solid #e83232;
+    color: #e83232;
+
+    font: inherit;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    cursor: pointer;
+
+    transition: background 180ms ease, color 180ms ease;
+  }
+
+  .mute-button[aria-pressed="true:"] {
+    background: #e83232;
+    color: #fff;
+  }
+
+  .mute-button:focus-visible {
+    outline: 1px solid #fff;
+    outline-offset: 4px;
+  }
+    
   .footer {
     margin-top: auto;
     font-size: 0.8rem;
@@ -339,6 +371,16 @@
       </section>
     </div>
 
+    <button
+      id="mute-button"
+      class="mute-button"
+      type="button"
+      aria-pressed="false"
+      aria-label="Mute audio"
+    >
+      MUTE
+    </button>
+      
     <footer class="footer">
       Visuals and music created by Jay + Will &amp; the Mood
       <div class="footer-small">Song Title: Will &amp; the Mood – Green Sleep</div>
@@ -350,6 +392,7 @@
     const video = document.getElementById('background-video');
     const enterScreen = document.getElementById('enter-screen');
     const enterButton = document.getElementById('enter-button');
+    const muteButton = document.getElementById('mute-button');
 
     enterButton.addEventListener('click', async () => {
       video.muted = false;
@@ -365,6 +408,14 @@
   <span class="enter-subtitle">tap to play with audio</span>
 `;
       }
+    });
+
+    muteButton.addEventListener('click', () => {
+      video.muted = !video.muted;
+
+      const isMuted = video.muted;
+      muteButton.setAttribute('aria-pressed',String(isMuted));
+      muteButton.setAttribute('aria-label',isMuted ? 'Unmute audio' : 'Mute audio');
     });
 
     const headers = document.querySelectorAll('.accordion-header');
