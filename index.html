@@ -227,13 +227,26 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
   }
 
-  .accordion-content a { color: #fff; text-decoration: underline; transition: color 180ms ease; }
-  .accordion-content a:hover { color: #ff3b3b; }
+  .accordion-content a { 
+    color: #fff; 
+    text-decoration: none; 
+    transition: color 180ms ease;
+  }
+  .accordion-content a:hover { 
+    color: #ff3b3b; 
+  }
+
+  .accordion-content a.work-link,
+  .accordion-content a.work-link:hover,
+  .accordion-content a.work-link:focus-visible,
+  .accordion-content a.work-link:active {
+    text-decoration: none;
+  }
 
   .work-link {
     display: inline-block;
     margin-top: 5px;
-    padding: 7px 11px;
+    padding: 9px 14px;
 
     background: transparent;
     border: 1px solid #e83232;
@@ -241,7 +254,7 @@
     color: #e83232;
 
     font-family: "Helvetica Neue", Helvetica, Arial, sans-sarif;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     line-height: 1;
@@ -479,7 +492,7 @@
           <p>[A brief description of music video/influences]</p>
           <p>A music video for the track 'Running' by Will &amp; the Mood, reworked from various short films by Norman McLaren and Oskar Fischinger.
           <br>The work explores colour and momentum, with sonic and visual elements working in tandem to create an inspired and cohesive piece</p>
-          <a class="work-link" href="https://www.youtube.com/watch?v=E6CFK-526UE" target="_blank" rel="noopener">Watch on YouTube</a>
+          <a class="work-link" href="https://www.youtube.com/watch?v=E6CFK-526UE" target="_blank" rel="noopener">WATCH ON YOUTUBE</a>
         </div>
       </section>
 
@@ -489,7 +502,7 @@
         </button>
         <div id="works-content" class="accordion-content" role="region">
           <p>Selected pieces across animation, audio, and visual experimentation</p>
-          <a class="work-link" href="https://vimeo.com/user/220013283/folder/30464258" target="_blank" rel="noopener">Watch on Vimeo</a>
+          <a class="work-link" href="https://vimeo.com/user/220013283/folder/30464258" target="_blank" rel="noopener">WATCH ON VIMEO</a>
         </div>
       </section>
 
