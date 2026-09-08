@@ -397,6 +397,8 @@
     enterButton.addEventListener('click', async () => {
       video.muted = false;
       video.volume = 0.8;
+      muteButton.setAttribute('aria-pressed','false');
+      muteButton.setAttribute('aria-label','Mute audio');
 
       try {
         await video.play();
