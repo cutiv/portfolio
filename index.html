@@ -39,6 +39,16 @@
     transition: opacity 700ms ease, visibility 700ms ease;
   }
 
+  .enter-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+
   .enter-screen.is-hidden {
     opacity: 0;
     visibility: hidden;
@@ -47,6 +57,9 @@
 
   .enter-button {
     appearance: none;
+    position: relative;
+    z-index: 1;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -453,6 +466,18 @@
 
   <!-- The visitor's click permits the browser to start audio playback. -->
   <div id="enter-screen" class="enter-screen">
+    <video
+      class="enter-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+      >
+      <source src="enter-1.mp4" type="video/mp4" />
+      </video>
+    
     <button id="enter-button" class="enter-button" type="button">
       <span class="enter-title">ENTER W AUDIO</span>
       <span class="enter-subtitle">Jay Cutforth <b>•</b> Portfolio</span>
