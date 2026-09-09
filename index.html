@@ -286,6 +286,48 @@
   text-decoration: none;
   outline: none;
 }
+
+  .document-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 18px;
+  }
+
+  .accordion-content a.document-link, .document-links a {
+    display: inline-block;
+    padding: 7px 11px;
+
+    background: transparent;
+    border: 1px solid #e83232;
+    border-radius: 0;
+    color: #e83232;
+
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    line-height: 1;
+    text-decoration: none;
+
+    transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+  }
+
+  .accordion-content .document-links a:visited {
+    color: #e83232;
+  }
+
+  .accordion-content .document-links a:hover,
+  .accordion-content .document-links a:focus-visible,
+  .accordion-content .document-links a:active {
+    background: #e83232;
+    border-color: #e83232;
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+  }
   
   /* 111 MUTE, The bottom-right group: slider on left, MUTE on right */
 .bottom-right-panel {
@@ -499,10 +541,10 @@
           <p>Jay Cutforth is a Melbourne based artist working across image, music, and visual compositions.
           <br>His practice draws on rhythm, archive footage, atmoshpere, and experimental animation.</p>
           <img src="headshot.jpg" alt="Portrait of Jay" />
-          <p>
+          <div class="document-links">
             <a href="CV-Museums-Vic.pdf" target="_blank" rel="noopener"><b>OPEN CV</b></a> •
             <a href="Cover-Letter-Noise-Complaint.pdf" target="_blank" rel="noopener"><b>OPEN COVER LETTER</b></a>
-          </p>
+          </div>
         </div>
       </section>
 
