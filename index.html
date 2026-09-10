@@ -328,6 +328,80 @@
     text-decoration: none;
     outline: none;
   }
+
+  /* Fixed lower-left scrolling client/collaborator ticker */
+  .client-ticker {
+    position: fixed;
+    z-index: 5;
+    left: 2vw;
+    bottom: 10px
+
+    width: min(520px 48vw);
+    overflow: hidden;
+    white-space: nowrap;
+
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    line-height: 1;
+    text-transform: uppercase;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  }
+
+  .client-ticker-track {
+    display: flex;
+    width: max-content;
+    animation: client-ticker-scroll 28s linear infinite;
+  }
+
+  .client-ticker-track span {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .client-ticker-track b {
+    display: inline-block;
+    margin: 0 18px;
+    color: #e83232;
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  /* Pause the movement while someone reads with mouse */
+  .client-ticker:hover .client-ticker-track {
+    animation-play-state: paused;
+  }
+
+  /* Move one full copy off screen; second copy takes its place */
+  @keyframes client-ticker-scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Respect operating system reduced-motion settings */
+  @media (prefers-reduced-motion: reduce) {
+    .client-ticker {
+      overflow-x: auto;
+      white-space: normal;
+    }
+
+    .client-ticker-track {
+      width: auto;
+      animation: none;
+    }
+
+    .client-ticker-track span[aria-hidden="true"] {
+      display: none;
+    }
+  }
   
   /* 111 MUTE, The bottom-right group: slider on left, MUTE on right */
 .bottom-right-panel {
@@ -488,6 +562,19 @@
       right: 16px;
       bottom: 16px;
     }
+    .client-ticker {
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      width: auto;
+
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+    }
+
+    .bottom-right-panel {
+      display: none;
+    }
   }
 </style>
 </head>
@@ -585,6 +672,37 @@
     </div>
 
       
+    <div class="client-ticker" aria-label="Selected collaborators and clients">
+      <div class="client-ticker-track">
+        <span>
+          BUSINESS / ORGANISATION ONE
+          <b aria-hidden="true">•</b>
+          BUSINESS / ORGANISATION TWO
+          <b aria-hidden="true">•</b>
+          BUSINESS / ORGANISATION THREE
+          <b aria-hidden="true">•</b>
+          BUSINESS / ORGANISATION FOUR
+          <b aria-hidden="true">•</b>
+          SELECTED CLIENTS &amp; COLLABORATORS
+          <b aria-hidden="true"•></b>
+
+          <!-- Exact duplicate creates the seamless loop -->
+          <span aria-hidden="true">
+            BUSINESS / ORGANISATION ONE
+            <b>•</b>
+            BUSINESS / ORGANISATION TWO
+            <b>•</b>
+            BUSINESS / ORGANISATION THREE
+            <b>•</b>
+            BUSINESS / ORGANISATION FOUR
+            <b>•</b>
+            SELECTED CLIENTS &amp; COLLABORATORS
+            <b>•</b>
+          </span>
+        </span>
+      </div>
+    </div>
+    
     <div class="bottom-right-panel">
   <footer class="footer">
     <div class="footer-small site-built">Site built by Jay Cutforth</div>
